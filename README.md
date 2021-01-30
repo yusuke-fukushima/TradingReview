@@ -1,24 +1,41 @@
-# README
+# <TradingReview>
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+ 企業の商品のレビューを10円で買い取るサイトです。
+ 企業の商品を掲載をさせていただき、その商品を使ったことがある人はその商品についてレビューをします。
+ そのレビューを買い取らせていただき、そのレビューを元にデータ解析します。
+ 最終的には、そのデータ解析を元に企業にコンサルティングをしていきます。
 
-Things you may want to cover:
 
-* Ruby version
+### サイトテーマ
+ 消費者には求める商品、会社には意思決定の材料と売上向上を提供する
 
-* System dependencies
+### テーマを選んだ理由
+ 中国のアリババのビジネスが素晴らしいと思ったから
+ 中国のアリババでは、意思決定を自動化することにより、消費者が求めている商品を素早く設計、製造、販売まで持っていくことができます。
+ 消費者は欲しいものを手に入れることができ、会社は、無駄な意思決定を減らし、売上アップに繋げられるメリットがこのサイトにあります。
 
-* Configuration
 
-* Database creation
+### ターゲットユーザ
+全世代
 
-* Database initialization
+### 主な利用シーン
+レビューをしてお金を稼ぎたい時
 
-* How to run the test suite
+## 設計書
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
 
-* ...
+## チャレンジ要素一覧
+https://docs.google.com/spreadsheets/d/1GixniUkmMtoQUQIbl4_a1gegywtDDSDSYoEGK9CQfa8/edit?usp=sharing
+
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
+
+## 使用素材
+- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。
+- 使用しない場合は、使用素材の項目をREADMEから削除してください。
