@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  value: 1.5
+  good_point: MyText
+  bad_point: MyText
+  improvement_point: MyText
+
+two:
+  value: 1.5
+  good_point: MyText
+  bad_point: MyText
+  improvement_point: MyText
