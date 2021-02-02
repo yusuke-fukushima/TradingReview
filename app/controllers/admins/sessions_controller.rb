@@ -6,12 +6,12 @@ class Admins::SessionsController < Devise::SessionsController
   def new_guest
     admin = Admin.guest
     sign_in admin
-    redirect_to root_path
+    redirect_to admin_reviews_path
   end
   
   protected
   def after_sign_in_path_for(resource)
-    admin_items_path
+    admin_reviews_path
   end
 
   def after_sign_out_path_for(resource)
