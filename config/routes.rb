@@ -1,27 +1,4 @@
 Rails.application.routes.draw do
-  get 'reviews/index'
-  get 'reviews/show'
-  get 'items/index'
-  get 'items/new'
-  get 'items/create'
-  get 'items/show'
-  get 'items/edit'
-  get 'items/update'
-  get 'genres/index'
-  get 'genres/create'
-  get 'genres/edit'
-  get 'genres/update'
-  get 'customers/index'
-  get 'customers/show'
-  get 'customers/edit'
-  get 'customers/update'
-  get 'reviews/new'
-  get 'items/index'
-  get 'items/show'
-  get 'genres/index'
-  get 'customers/show'
-  get 'customers/edit'
-  get 'customers/update'
   devise_for :admins, controllers: {
     sessions: 'admins/sessions'
   }
@@ -39,9 +16,20 @@ Rails.application.routes.draw do
   root to: 'homes#top'
 
   namespace :public do
+    resources :customers, only: [:show, :edit, :update]
+    resources :genres, only: [:index, :show]
+    resources :items, only: [:index, :show]
+    resources :reviews, only: [:new]
+    get 'reviews/confirm' => 'orders#confirm'
+    get 'reviews/complete' => 'orders#complete'
   end
 
   namespace :admin do
     root to: 'homes#top'
+    resources :customers, only: [:index, :show, :edit, :update]
+    resources :items
+    resources :genres, only: [:index, :create, :edit, :update]
+    resources :reviews, only: [:index, :show] do
+    end
   end
 end
