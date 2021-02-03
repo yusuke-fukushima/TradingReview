@@ -1,6 +1,10 @@
 <h2>ジャンル編集</h2>
 <%= form_with model:@genre, url: admin_genre_path(@genre.id), local:true do |f| %>
   <div>
+    <%= f.label :"ジャンル画像" %>
+    <%= f.attachment_field :image %>
+  </div>
+  <div>
     <%= f.label :"ジャンル名" %>
     <%= f.text_field :name %>
   </div>
