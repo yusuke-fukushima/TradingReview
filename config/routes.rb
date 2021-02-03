@@ -28,7 +28,8 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     resources :customers, only: [:index, :show, :edit, :update]
     resources :items
-    resources :genres, only: [:index, :create, :edit, :update]
+    # 建前上ジャンルに削除メソッドを加えている
+    resources :genres, only: [:index, :create, :edit, :update, :destroy]
     resources :reviews, only: [:index, :show] do
     end
   end
