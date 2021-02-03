@@ -17,8 +17,9 @@ Rails.application.routes.draw do
 
   namespace :public do
     resources :customers, only: [:show, :edit, :update]
-    resources :genres, only: [:index, :show]
-    resources :items, only: [:index, :show]
+    resources :genres, only: [:index] do
+      resources :items, only: [:index, :show]
+    end
     resources :reviews, only: [:new]
     get 'reviews/confirm' => 'orders#confirm'
     get 'reviews/complete' => 'orders#complete'

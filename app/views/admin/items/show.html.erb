@@ -1,1 +1,24 @@
-<h1>商品詳細</h1>
+<div class="container">
+<h2>商品詳細</h2>
+  <div class="row">
+    <div class="col-3">
+      <%= attachment_image_tag(@item, :image, size: "200x200", fallback: "no_image.jpg") %>
+    </div>
+    <div>
+      <table>
+        <tr>
+          <th>商品名</th>
+          <td><%= @item.name %></td>
+        </tr>
+        <tr >
+          <th>商品説明</th>
+          <td><%= @item.detail %></td>
+        </tr>
+        <tr >
+          <th>ジャンル</th>
+          <td><%= @item.genre.name %></td>
+        </tr>
+      </table>
+<div>
+  <%= link_to "編集する", edit_admin_item_path(@item), class: "btn btn-success" %>
+</div>
