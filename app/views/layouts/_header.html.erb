@@ -8,14 +8,14 @@
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
         <% if customer_signed_in? %>
-          <li><%= link_to 'マイページ', destroy_customer_session_path, method: :delete,class: 'fas fa-sign-out-alt nav-link text-light' %></li>
-          <li><%= link_to '商品一覧', destroy_customer_session_path, method: :delete,class: 'fas fa-sign-out-alt nav-link text-light' %></li>
+          <li><%= link_to 'マイページ', public_customer_path(current_customer.id), class: 'fas fa-user nav-link text-light' %></li>
+          <li><%= link_to 'ジャンル一覧', public_genres_path, class: 'fas fa-gifts nav-link text-light' %></li>
           <li><%= link_to 'ログアウト', destroy_customer_session_path, method: :delete,class: 'fas fa-sign-out-alt nav-link text-light' %></li>
         <% elsif admin_signed_in? %>
-          <li><%= link_to '商品一覧', destroy_customer_session_path, method: :delete,class: 'fas fa-sign-out-alt nav-link text-light' %></li>
-          <li><%= link_to 'ジャンル一覧', destroy_customer_session_path, method: :delete,class: 'fas fa-sign-out-alt nav-link text-light' %></li>
-          <li><%= link_to '会員一覧', destroy_customer_session_path, method: :delete,class: 'fas fa-sign-out-alt nav-link text-light' %></li>
-          <li><%= link_to 'レビュー履歴一覧', destroy_customer_session_path, method: :delete,class: 'fas fa-sign-out-alt nav-link text-light' %></li>
+          <li><%= link_to '商品一覧', admin_items_path, class: 'fas fa-gift nav-link text-light' %></li>
+          <li><%= link_to 'ジャンル一覧', admin_genres_path, class: 'fas fa-gifts nav-link text-light' %></li>
+          <li><%= link_to '会員一覧', admin_customers_path, class: 'fa fa-users nav-link text-light' %></li>
+          <li><%= link_to 'レビュー履歴一覧', admin_reviews_path, class: 'fas fa-comment-dots nav-link text-light' %>
           <li><%= link_to 'ログアウト', destroy_customer_session_path, method: :delete,class: 'fas fa-sign-out-alt nav-link text-light' %></li>
         <% else %>
         <% end %>

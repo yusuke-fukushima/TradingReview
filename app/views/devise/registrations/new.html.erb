@@ -26,14 +26,14 @@
             <div class="input-group-prepend">
               <span class="input-group-text" aria-hidden="true"><i class="fas fa-tenge"></i></span>
             </div>
-            <%= f.text_field :postal_code, autofocus: true, placeholder: '郵便番号', class: "postal_code", id: "address_zipcode" %>
+            <%= f.text_field :postal_code, autofocus: true, class:"form-control", id:"inputPostalcode", placeholder: '郵便番号' %>
           </div>
         
           <div class="input-group mb-3">
             <div class="input-group-prepend">
               <span class="input-group-text" aria-hidden="true"><i class="fab fa-font-awesome-flag"></i></span>
             </div>
-            <%= f.text_field :address, autofocus: true, placeholder: '住所', class: "address", id:"address" %>
+            <%= f.text_field :address, autofocus: true, class:"form-control", id:"inputAddress", placeholder: '住所' %>
           </div>
         
           <div class="input-group mb-3">
