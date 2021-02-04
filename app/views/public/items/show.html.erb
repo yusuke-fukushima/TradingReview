@@ -1,1 +1,6 @@
 <h1>商品詳細</h1>
+<%= attachment_image_tag(@item, :image, size: "200x200", fallback: "no_image.jpg") %>
+<%= @item.name %>
+<%= @item.detail %>
+<%= link_to "投稿画面に進む",new_public_review_path(@item), class: "btn btn-success" %>
+
