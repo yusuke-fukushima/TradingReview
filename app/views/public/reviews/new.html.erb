@@ -1,2 +1,10 @@
 <h1>レビュー投稿画面</h1>
-<%= link_to "投稿確認画面に進む",public_reviews_confirm_path(@item), class: "btn btn-success" %>
+<%= form_with model: @reviews, url: public_reviews_confirm_path, method: :get,local: true do |f| %>
+  <%= f.label :good_point, "良い点" %>
+	<%= f.text_field :good_point %>
+  <%= f.label :bad_point, "悪い点" %>
+	<%= f.text_field :bad_point %>
+  <%= f.label :improvement_point, "改善点" %>
+	<%= f.text_field :improvement_point %>
+  <%= f.submit "投稿確認画面へ進む", class:"btn btn-primary" %>
+<% end %>
