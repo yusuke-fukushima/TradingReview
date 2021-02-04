@@ -1,1 +1,40 @@
-<h1>レビュー詳細</h1>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <table>
+        <tr>
+          <th>レビュー日時</th>
+          <td><%= @review.created_at.strftime("%Y/%m/%d") %></td>
+        </tr>
+        <tr>
+          <th>レビュー者</th>
+          <td><%= @review.customer.name %></td>
+        </tr>
+        <tr>
+          <th>ジャンル名</th>
+          <td><%= @review.genre.name %></td>
+        </tr>
+        <tr>
+          <th>商品名</th>
+          <td><%= @review.item.name %></td>
+        </tr>
+        <tr>
+          <th>レビュー評価</th>
+          <td><%= @review.customer.name %></td>
+        </tr>
+        <tr>
+          <th>良い点</th>
+          <td><%= @review.customer.name %></td>
+        </tr>
+        <tr>
+          <th>悪い点</th>
+          <td><%= @review.customer.name %></td>
+        </tr>
+        <tr>
+          <th>改善点</th>
+          <td><%= @review.customer.name %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

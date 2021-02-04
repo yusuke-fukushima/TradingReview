@@ -1,1 +1,30 @@
-<h1>レビュー履歴一覧</h1>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h2>注文履歴一覧</h2>
+      <table class="table table-hover table-bordered">
+        <thead class="table-active">
+          <tr class="info">
+            <th>レビュー日時</th>
+            <th>レビュー者</th>
+            <th>商品名</th>
+            <th>レビュー評価</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <% @reviews.each do |review| %>
+            <%= link_to admin_review_path(review) do %>
+              <tr>
+                <td><%= review.created_at.strftime("%Y/%m/%d")  %></td>
+                <td><%= review.customer.name %></td>
+                <td><%= review.item.name %></td>
+                <td></td>
+              </tr>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
