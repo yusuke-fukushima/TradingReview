@@ -1,1 +1,15 @@
-<h1><%#= @genre.name %>の商品一覧</h1>
+<div class="container">
+  <h1><%= @genre.name %>の商品一覧</h1>
+  <div class="row">
+    <div class="col">
+      <% @items.each do |item| %>
+        <div>
+          <%= link_to public_genre_item_path(@genre.item) do %>
+            <p><%= attachment_image_tag(item, :image, size: "40x40", fallback: "no_image.jpg") %></p>
+            <p><%= item.name %></p>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

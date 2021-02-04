@@ -22,7 +22,7 @@ before_action :authenticate_admin!
     end
   end
   
-    private
+  private
 	def customer_params
 	  params.require(:customer).permit(:name,:postal_code,:address,:email)
 	end
