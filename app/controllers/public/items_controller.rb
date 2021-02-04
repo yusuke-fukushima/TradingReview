@@ -1,4 +1,6 @@
 class Public::ItemsController < ApplicationController
+before_action :authenticate_customer!
+
   def index
     @genre = Genre.find(params[:id])
     @items = Item.all
