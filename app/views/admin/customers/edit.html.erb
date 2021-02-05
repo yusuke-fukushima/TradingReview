@@ -1,31 +1,36 @@
-<h1><%= @customer.name %>さんの会員情報編集</h1>
-      <%= form_with model:@customer, url:admin_customer_path(@customer),local:true do |f| %>
-        <table class="table table-borderless">
-          <tr>
-            <th><%= f.label :"会員ID" %></th>
-            <td><%= f.label :"#{@customer.id}" %></td>
-          </tr>
-          <tr>
-            <th><%= f.label :"氏名" %></th>
-            <td><%= f.text_field :name %></td>
-          </tr>
-          <tr>
-            <th><%= f.label :"郵便番号" %></th>
-            <td><%= f.text_field :postal_code %></td>
-          </tr>
-          <tr>
-            <th><%= f.label :"住所" %></th>
-            <td><%= f.text_field :address%></td>
-          </tr>
-          <tr>
-            <th><%= f.label :"メールアドレス" %></th>
-            <td><%= f.text_field :email %></td>
-          </tr>
-        </table>
-        <div>
-          <%= f.submit "変更を保存する", class: "btn btn-success"%>
-        </div>
-      <% end %>
+<div class="container">
+  <div class="row no-gutters">
+    <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto text-center shadow-lg rounded px-0 my-5">
+      <h5 class="text-dark bg-light p-4 mb-0"><%= @customer.name %>さんの会員情報編集</h5>
+      <div class="form-body p-4">
+        <%= form_with model:@customer, url:admin_customer_path(@customer),local:true do |f| %>
+          <div class="input-group mb-3 mt-4">
+            <div class="input-group-prepend">
+              <span class="input-group-text" aria-hidden="true"><i class="fas fa-user"></i></span>
+            </div>
+            <%= f.text_field :name, class:"form-control", placeholder:"氏名" %>
+          </div>
+          <div class="input-group mb-3 mt-4">
+            <div class="input-group-prepend">
+              <span class="input-group-text" aria-hidden="true"><i class="fas fa-envelope"></i></span>
+            </div>
+            <%= f.text_field :email, class:"form-control", placeholder:"メールアドレス" %>
+          </div>
+          <div class="input-group mb-3 mt-4">
+            <div class="input-group-prepend">
+              <span class="input-group-text" aria-hidden="true"><i class="fas fa-tenge"></i></span>
+            </div>
+            <%= f.text_field :postal_code, class:"form-control", placeholder:"郵便番号" %>
+          </div>
+          <div class="input-group mb-3 mt-4">
+            <div class="input-group-prepend">
+              <span class="input-group-text" aria-hidden="true"><i class="fab fa-font-awesome-flag"></i></span>
+            </div>
+            <%= f.text_field :address, class:"form-control", placeholder:"住所" %>
+          </div>
+          <%= f.submit "変更内容保存", class:"btn btn-block btn-success mt-5" %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

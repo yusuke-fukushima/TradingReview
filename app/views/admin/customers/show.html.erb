@@ -1,27 +1,29 @@
-<h1><%= @customer.name %>さんの会員詳細</h1>
-    <table>
-      <tr>
-        <th>顧客ID</th>
-        <td><%= @customer.id %></td>
-      </tr>
-      <tr>
-        <th>氏名</th>
-        <td><%= @customer.name %></td>
-      </tr>
-      <tr>
-        <th>郵便番号</th>
-        <td><%= @customer.postal_code %></td>
-      </tr>
-      <tr>
-        <th>住所</th>
-        <td><%= @customer.address %></td>
-      </tr>
-      <tr>
-        <th>メールアドレス</th>
-        <td><%= @customer.email %></td>
-      </tr>
-    </table>
-<div>
-  <%= link_to "編集する",edit_admin_customer_path(@customer), class: "btn btn-success" %>
-  <%= link_to " レビュー履歴一覧を見る", admin_reviews_path, class: "btn btn-primary" %>
+<div class="container">
+  <div class="row no-gutters">
+    <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto text-center shadow-lg px-0 my-5">
+      <h5 class="text-dark bg-light py-4 mb-0"><%= @customer.name %>さんの会員詳細</h5>
+      <div class="p-4">
+        <table class="table table-bordered mt-2">
+          <tr>
+            <th>氏名</th>
+            <td><%= @customer.name %></td>
+          </tr>
+          <tr>
+            <th>メールアドレス</th>
+            <td><%= @customer.email %></td>
+          </tr>
+          <tr>
+            <th>郵便番号</th>
+            <td><%= @customer.postal_code %></td>
+          </tr>
+          <tr>
+            <th>住所</th>
+            <td><%= @customer.address %></td>
+          </tr>
+        </table>
+        <%= link_to "編集", edit_admin_customer_path(@customer), class:"btn btn-block btn-success" %>
+        <%= link_to "レビュー履歴一覧", admin_reviews_path, class:"btn btn-block btn-success" %>
+      </div>
+    </div>
+  </div>
 </div>

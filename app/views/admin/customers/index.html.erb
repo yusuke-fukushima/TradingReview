@@ -1,24 +1,33 @@
-<h1>会員一覧</h1>
-<table>
-  <thead>
-    <tr>
-      <th>氏名</th>
-      <th>メールアドレス</th>
-      <th>ステータス</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @customers.each do |customer| %>
-      <tr>
-        <td>
-          <%= link_to admin_customer_path(customer) do %>
-            <%= customer.name %>
-          <% end %>
-        </td>
-        <td>
-          <%= customer.email %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="container">
+  <div class="row no-gutters">
+    <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto text-center shadow-lg px-0 my-5">
+      <h5 class="text-dark bg-light py-4 mb-0">会員一覧</h5>
+      <div class="p-4">
+        <table class="table table-bordered mt-2">
+          <thead>
+            <tr>
+              <th>氏名</th>
+              <th>メールアドレス</th>
+              <th>ステータス</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @customers.each do |customer| %>
+              <tr>
+                <td>
+                  <%= customer.name %>
+                </td>
+                <td>
+                  <%= link_to admin_customer_path(customer) do %>
+                  <%= customer.email %>
+                  <% end %>
+                </td>
+                <td></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
