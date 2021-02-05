@@ -1,21 +1,28 @@
-<h2>ジャンル一覧</h2>
-<table>
-  <thead>
-    <tr>
-      <th>ジャンル画像</th>
-      <th>ジャンル</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @genres.each do |genre| %>
-      <tr>
-        <td><%= attachment_image_tag(genre, :image, size: "40x40", fallback: "no_image.jpg") %></td>
-        <td><%= genre.name %></td>
-        <td><%= link_to "新規登録する", new_admin_genre_path, class: "btn btn-success" %></td>
-        <td><%= link_to "編集する", edit_admin_genre_path(genre), class: "btn btn-success" %></td>
-        <td><%= link_to "削除する", edit_admin_genre_path(genre),method: :delete,class: "btn btn-success" %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="container">
+  <div class="row no-gutters">
+    <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto text-center shadow-lg px-0 my-5">
+      <h5 class="text-dark bg-light py-4 mb-0">ジャンル一覧</h5>
+      <div class="p-4">
+        <table class="table table-bordered mt-2">
+          <thead>
+            <tr>
+              <th>ジャンル名</th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @genres.each do |genre| %>
+              <tr>
+                <td><%= genre.name %></td>
+                <td><%= link_to "編集", edit_admin_genre_path(genre), class: "btn btn-info" %></td>
+                <td><%= link_to "削除", edit_admin_genre_path(genre), method: :delete, class: "btn btn-danger" %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <%= link_to "新規登録", new_admin_genre_path, class:"btn btn-block btn-success mt-5" %>
+      </div>
+    </div>
+  </div>
+</div>
