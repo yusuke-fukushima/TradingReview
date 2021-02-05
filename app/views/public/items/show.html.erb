@@ -1,6 +1,25 @@
-<h1>商品詳細</h1>
-<%= attachment_image_tag(@item, :image, size: "200x200", fallback: "no_image.jpg") %>
-<%= @item.name %>
-<%= @item.detail %>
-<%= link_to "投稿画面に進む",new_public_review_path(@item), class: "btn btn-success" %>
-
+<div class="container">
+  <div class="row no-gutters">
+    <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto text-center shadow-lg px-0 my-5">
+      <h5 class="text-dark bg-light py-4 mb-0">商品詳細</h5>
+      <div class="p-4">
+        <table class="table table-bordered mt-2">
+          <%= attachment_image_tag(@item, :image, size: "200x200", fallback: "no_image.jpg") %>
+          <tr>
+            <th>ジャンル名</th>
+            <td><%= @item.genre.name %></td>
+          </tr>
+          <tr>
+            <th>商品名</th>
+            <td><%= @item.name %></td>
+          </tr>
+          <tr>
+            <th>商品説明</th>
+            <td><%= @item.detail %></td>
+          </tr>
+        </table>
+        <%= link_to "投稿画面に進む",new_public_review_path, class: "btn btn-success" %>
+      </div>
+    </div>
+  </div>
+</div>
