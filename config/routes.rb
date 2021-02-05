@@ -21,7 +21,7 @@ Rails.application.routes.draw do
       resources :items, only: [:index, :show]
     end
     resources :reviews, only: [:new, :create]
-    get 'reviews/complete' => 'reviews#complete'
+    post 'reviews/complete' => 'reviews#complete'
   end
 
   namespace :admin do

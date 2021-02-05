@@ -12,8 +12,10 @@ before_action :authenticate_admin!
   def create
     @item = Item.new(item_params)
     if @item.save
+      flash[:notice] = "新商品を登録しました!!"
       redirect_to admin_item_path(@item)
     else
+      flash[:notice] = "入力漏れがあります"
       render :new
     end
   end

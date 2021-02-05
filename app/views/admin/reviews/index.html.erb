@@ -1,30 +1,32 @@
 <div class="container">
-  <div class="row">
-    <div class="col">
-      <h2>注文履歴一覧</h2>
-      <table class="table table-hover table-bordered">
-        <thead class="table-active">
-          <tr class="info">
-            <th>レビュー日時</th>
-            <th>レビュー者</th>
-            <th>商品名</th>
-            <th>レビュー評価</th>
-
-          </tr>
-        </thead>
-        <tbody>
-          <% @reviews.each do |review| %>
-            <%= link_to admin_review_path(review) do %>
-              <tr>
-                <td><%= review.created_at.strftime("%Y/%m/%d")  %></td>
-                <td><%= review.customer.name %></td>
-                <td><%= review.item.name %></td>
-                <td></td>
-              </tr>
+  <div class="row no-gutters">
+    <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto text-center shadow-lg px-0 my-5">
+      <h5 class="text-dark bg-light py-4 mb-0">商品一覧</h5>
+      <div class="p-4">
+        <table class="table table-bordered mt-2">
+          <thead>
+            <tr>
+              <th>日時</th>
+              <th>レビュー者</th>
+              <th>商品名</th>
+              <th>レビュー評価</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @reviews.each do |review| %>
+              <%= link_to admin_review_path(review) do %>
+                <tr>
+                  <td><%= review.created_at.strftime("%Y/%m/%d")  %></td>
+                  <td><%= review.customer.name %></td>
+                  <td><%= review.item.name %></td>
+                  <td></td>
+                </tr>
+              <% end %>
             <% end %>
-          <% end %>
-        </tbody>
-      </table>
+          </tbody>
+        </table>
+        <%= link_to "新規登録", new_admin_item_path, class:"btn btn-block btn-success mt-5" %>
+      </div>
     </div>
   </div>
 </div>
