@@ -30,7 +30,7 @@ Rails.application.routes.draw do
     resources :customers, only: [:index, :show, :edit, :update]
     resources :items
     # 建前上ジャンルに削除メソッドを加えている
-    resources :genres, only: [:index, :create, :edit, :update, :destroy]
+    resources :genres
     resources :reviews, only: [:index, :show] do
     end
   end

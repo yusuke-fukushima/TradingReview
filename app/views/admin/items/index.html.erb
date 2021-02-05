@@ -1,29 +1,32 @@
-<h2>商品一覧</h2>
-<%= link_to new_admin_item_path do %>
-  新規登録
-<% end %>
-<table>
-  <thead>
-    <tr>
-      <th>ジャンル</th>
-      <th>商品名</th>
-      <th>平均レビュー評価</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @items.each do |item| %>
-      <tr>
-        <td>
-          <%= item.genre.name %>
-        </td>
-        <td>
-          <%= link_to admin_item_path(item) do %>
-            <%= item.name %>
-          <% end %>
-        </td>
-        <td>
-        </td>
-      </tr>
-  </tbody>
-  <% end %>
-</table>
+<div class="container">
+  <div class="row no-gutters">
+    <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto text-center shadow-lg px-0 my-5">
+      <h5 class="text-dark bg-light py-4 mb-0">商品一覧</h5>
+      <div class="p-4">
+        <table class="table table-bordered mt-2">
+          <thead>
+            <tr>
+              <th>ジャンル</th>
+              <th>商品名</th>
+              <th>平均レビュー評価</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @items.each do |item| %>
+              <tr>
+                <td><%= item.genre.name %></td>
+                <td>
+                  <%= link_to admin_item_path(item) do %>
+                    <%= item.name %>
+                  <% end %>
+                </td>
+                <td></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <%= link_to "新規登録", new_admin_item_path, class:"btn btn-block btn-success mt-5" %>
+      </div>
+    </div>
+  </div>
+</div>
