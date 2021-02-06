@@ -1,15 +1,17 @@
 <div class="container">
-  <h1>ジャンル一覧</h1>
-  <div class="row">
-    <div class="col">
-      <% @genres.each do |genre| %>
-        <div>
-          <%= link_to public_genre_items_path(genre.id) do %>
-            <p><%= attachment_image_tag(genre, :image, size: "40x40", fallback: "no_image.jpg") %></p>
-            <p><%= genre.name %></p>
-          <% end %>
-        </div>
-      <% end %>
+  <div class="row no-gutters">
+    <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto text-center shadow-lg px-0 my-5">
+      <h5 class="text-dark bg-light py-4 mb-0">ジャンル一覧</h5>
+      <div class="p-4">
+        <% @genres.each do |genre| %>
+          <div>
+            <%= link_to public_genre_items_path(genre.id) do %>
+              <p><%= attachment_image_tag(genre, :image, size: "200x200", fallback: "no_image.jpg") %></p>
+              <p><%= genre.name %></p>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

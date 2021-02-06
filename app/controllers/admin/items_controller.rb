@@ -31,8 +31,10 @@ before_action :authenticate_admin!
   def update
     @item = Item.find(params[:id])
     if @item.update(item_params)
+      flash[:notice] = "商品を編集しました。"
       redirect_to admin_item_path(@item)
     else
+      flash[:notice] = "入力漏れがあります"
       render :edit
     end
   end

@@ -18,7 +18,7 @@
             <td><%= @item.detail %></td>
           </tr>
         </table>
-        <%= link_to "投稿画面に進む",new_public_review_path, class: "btn btn-success" %>
+        <%= link_to "投稿画面に進む",new_public_review_path(item_id: @item.id), class: "btn btn-success" %>
       </div>
     </div>
   </div>

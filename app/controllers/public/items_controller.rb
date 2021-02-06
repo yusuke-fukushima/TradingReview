@@ -3,7 +3,7 @@ before_action :authenticate_customer!
 
   def index
     @genre = Genre.find(params[:genre_id])
-    @items = Item.all
+    @items = @genre.items
   end
 
   def show
