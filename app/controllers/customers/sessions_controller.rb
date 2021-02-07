@@ -2,11 +2,11 @@
 
 class Customers::SessionsController < Devise::SessionsController
    before_action :configure_sign_in_params, only: [:update]
-  
+
   def new_guest
     customer = Customer.guest
     sign_in customer
-    redirect_to public_genres_path
+    redirect_to public_customer_path(customer)
   end
 
   # GET /resource/sign_in

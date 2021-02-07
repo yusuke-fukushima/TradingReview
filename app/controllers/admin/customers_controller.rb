@@ -16,7 +16,7 @@ before_action :authenticate_admin!
   def update
     @customer = Customer.find(params[:id])
     if @customer.update(customer_params)
-      redirect_to admin_customer_path(@customer)
+      redirect_to admin_customer_path(@customer.id)
     else
       render :edit
     end
@@ -24,6 +24,6 @@ before_action :authenticate_admin!
   
   private
 	def customer_params
-	  params.require(:customer).permit(:name,:postal_code,:address,:email)
+	  params.require(:customer).permit(:name,:email,:postal_code,:address, :is_deleted)
 	end
 end

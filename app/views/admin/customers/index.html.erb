@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row no-gutters">
-    <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto text-center shadow-lg px-0 my-5">
+    <div class="col-md-8 col-sm-10 mx-2 mx-sm-auto text-center shadow-lg px-0 my-5">
       <h5 class="text-dark bg-light py-4 mb-0">会員一覧</h5>
       <div class="p-4">
         <table class="table table-bordered mt-2">
@@ -8,7 +8,7 @@
             <tr>
               <th>氏名</th>
               <th>メールアドレス</th>
-              <th>ステータス</th>
+              <th>会員ステータス</th>
             </tr>
           </thead>
           <tbody>
@@ -22,7 +22,13 @@
                   <%= customer.email %>
                   <% end %>
                 </td>
-                <td></td>
+                <td>
+                  <% if customer.is_deleted == true %>
+                    <p class = "text-secondary">退会</p>
+                  <% else %>
+                    <p class = "text-success">有効</p>
+                  <% end %>
+                </td>
               </tr>
             <% end %>
           </tbody>
