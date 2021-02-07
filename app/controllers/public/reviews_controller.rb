@@ -20,6 +20,6 @@ before_action :authenticate_customer!
   private
 
   def review_params
-    params.require(:review).permit(:item_id, :good_point, :bad_point, :improvement_point)
+    params.require(:review).permit(:item_id, :value, :good_point, :bad_point, :improvement_point)
   end
 end

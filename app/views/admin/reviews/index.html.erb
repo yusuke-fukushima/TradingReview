@@ -22,7 +22,17 @@
                       <%= review.item.name %>
                     <% end %>
                   </td>
-                  <td></td>
+                  <td>
+                    <div class="item-value raty-center">
+                      <div class="star-rating mb-2">
+                        <div class="star-rating-front" style="width: <%= review.review_value_percentage %>%">★★★★★</div>
+                        <div class="star-rating-back">★★★★★</div>
+                      </div>
+                      <div class="item-value-display ml-3 pt-2">
+                        <%= review.value %>点
+                      </div>
+                    </div>
+                  </td>
                 </tr>
             <% end %>
           </tbody>
