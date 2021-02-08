@@ -3,7 +3,7 @@ before_action :authenticate_customer!
 
   def index
     @genre = Genre.find(params[:genre_id])
-    @items = @genre.items
+    @items = @genre.items.page(params[:page]).per(1)
   end
 
   def show

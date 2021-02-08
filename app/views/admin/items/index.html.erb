@@ -35,7 +35,8 @@
             <% end %>
           </tbody>
         </table>
-        <%= link_to "新規登録", new_admin_item_path, class:"btn btn-block btn-success mt-5" %>
+        <%= link_to "新規登録", new_admin_item_path, class:"btn btn-block btn-success mt-5 mb-5" %>
+        <%= paginate @items %>
       </div>
     </div>
   </div>
