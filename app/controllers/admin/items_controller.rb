@@ -1,5 +1,5 @@
 class Admin::ItemsController < ApplicationController
-before_action :authenticate_admin!  
+before_action :authenticate_admin!
 
   def index
     @items = Item.all
@@ -38,9 +38,15 @@ before_action :authenticate_admin!
       render :edit
     end
   end
-  
+
+  def destroy
+    @item = Item.find(params[:id])
+    @item.destroy
+    redirect_to admin_items_path
+  end
+
   private
-  
+
   def item_params
     params.require(:item).permit(:name, :detail, :genre_id)
   end

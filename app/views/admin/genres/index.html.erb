@@ -8,7 +8,6 @@
             <tr>
               <th>ジャンル名</th>
               <th></th>
-              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -16,7 +15,6 @@
               <tr>
                 <td><%= genre.name %></td>
                 <td><%= link_to "編集", edit_admin_genre_path(genre), class: "btn btn-primary pt-0 pb-0" %></td>
-                <td><%= link_to "削除", admin_genres_path, method: :delete, class: "btn btn-danger pt-0 pb-0" %></td>
               </tr>
             <% end %>
           </tbody>

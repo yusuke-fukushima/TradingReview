@@ -29,7 +29,6 @@ Rails.application.routes.draw do
     resources :customers, only: [:index, :show, :edit, :update]
     resources :items
     resources :genres
-    resources :reviews, only: [:index, :show] do
-    end
+    resources :reviews, only: [:index, :show]
   end
 end
