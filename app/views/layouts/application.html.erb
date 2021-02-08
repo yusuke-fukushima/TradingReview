@@ -4,14 +4,12 @@
     <title>TradingReview</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body class="d-flex flex-column vh-100">
     <%= render 'layouts/header' %>
-    <main class="mb-auto"><%= yield %></main>
+    <main class="mb-auto background"><%= yield %></main>
     <footer class="bg-dark text-white pt-5 pb-4"></footer>
   </body>
 </html>

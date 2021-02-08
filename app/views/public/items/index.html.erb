@@ -1,15 +1,13 @@
 <div class="container">
   <div class="row no-gutters">
-    <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto text-center shadow-lg px-0 my-5">
+    <div class="col-md-8 col-sm-10 mx-2 mx-sm-auto text-center shadow-lg px-0 my-5">
       <h5 class="text-dark bg-light py-4 mb-0"><%= @genre.name %>の商品一覧</h5>
-      <div class="p-4">
+      <div class="p-4 bg-light d-flex flex-wrap justify-content-center">
         <% @items.each do |item| %>
-          <div>
-            <%= link_to public_genre_item_path(@genre.id,item.id) do %>
-              <p><%= attachment_image_tag(item, :image, size: "200x200", fallback: "no_image.jpg") %></p>
-              <p><%= item.name %></p>
-            <% end %>
-          </div>
+          <%= link_to public_genre_item_path(@genre.id,item.id), class: "m-2" do %>
+            <p><%= attachment_image_tag(item, :image, size: "200x200", fallback: "no_image.jpg") %></p>
+            <p><%= item.name %></p>
+          <% end %>
         <% end %>
       </div>
     </div>

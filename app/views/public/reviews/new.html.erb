@@ -2,7 +2,7 @@
   <div class="row no-gutters">
     <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto text-center shadow-lg rounded px-0 my-5">
       <h5 class="text-dark bg-light p-4 mb-0">レビュー投稿画面</h5>
-      <div class="form-body p-4">
+      <div class="form-body p-4 bg-light">
         <%= form_with model:@review,url: public_reviews_path, local:true do |f| %>
         <%= f.hidden_field :item_id %>
         <%= f.hidden_field :value, id: "rating-value" %>
@@ -22,19 +22,19 @@
             <div class="input-group-prepend">
               <span class="input-group-text" aria-hidden="true"><i class="fas fa-thumbs-up"></i></span>
             </div>
-            <%= f.text_area :good_point, size: "1x5", class:"form-control", placeholder:"良い点" %>
+            <%= f.text_area :good_point, size: "1x3", class:"form-control", placeholder:"良い点" %>
           </div>
           <div class="input-group mb-3 mt-4">
             <div class="input-group-prepend">
               <span class="input-group-text" aria-hidden="true"><i class="fas fa-thumbs-down"></i></span>
             </div>
-            <%= f.text_area :bad_point, size: "1x5", class:"form-control", placeholder:"悪い点" %>
+            <%= f.text_area :bad_point, size: "1x3", class:"form-control", placeholder:"悪い点" %>
           </div>
           <div class="input-group mb-3 mt-4">
             <div class="input-group-prepend">
               <span class="input-group-text" aria-hidden="true"><i class="fas fa-fist-raised"></i></span>
             </div>
-            <%= f.text_area :improvement_point, size: "1x5", class:"form-control", placeholder:"改善点" %>
+            <%= f.text_area :improvement_point, size: "1x3", class:"form-control", placeholder:"改善点" %>
           </div>
           <%= f.submit "投稿確認画面へ進む", class:"btn btn-block btn-success mt-5" %>
         <% end %>
