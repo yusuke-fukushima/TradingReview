@@ -3,9 +3,9 @@ before_action :authenticate_admin!
 
   def index
     @genre = Genre.new
-    @genres = Genre.all.page(params[:page]).per(3)
+    @genres = Genre.all.page(params[:page]).per(4)
   end
-  
+
   def new
     @genre = Genre.new
   end
@@ -36,6 +36,6 @@ before_action :authenticate_admin!
   private
 
   def genre_params
-    params.require(:genre).permit(:name, :image_id)
+    params.require(:genre).permit(:name, :image)
   end
 end

@@ -16,7 +16,7 @@
               <tr>
                 <td><%= item.genre.name %></td>
                 <td>
-                  <%= link_to admin_item_path(item) do %>
+                  <%= link_to admin_item_path(item), :style=>"color:black;" do %>
                     <%= item.name %>
                   <% end %>
                 </td>
