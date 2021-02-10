@@ -2,14 +2,15 @@
 
 class Admins::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
-  
+
   def new_guest
     admin = Admin.guest
     sign_in admin
     redirect_to admin_reviews_path
   end
-  
+
   protected
+
   def after_sign_in_path_for(resource)
     admin_reviews_path
   end

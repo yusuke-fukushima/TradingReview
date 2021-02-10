@@ -1,6 +1,6 @@
 class Public::CustomersController < ApplicationController
-before_action :authenticate_customer!
-  
+  before_action :authenticate_customer!
+
   def show
     @customer = Customer.find(params[:id])
   end
@@ -17,9 +17,9 @@ before_action :authenticate_customer!
       render "edit"
     end
   end
-  
+
   private
-  
+
   def customer_params
     params.require(:customer).permit(:name, :email, :postal_code, :address)
   end

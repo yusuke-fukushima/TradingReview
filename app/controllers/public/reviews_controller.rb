@@ -1,5 +1,5 @@
 class Public::ReviewsController < ApplicationController
-before_action :authenticate_customer!
+  before_action :authenticate_customer!
 
   def new
     @review = Review.new(item_id: params[:item_id])

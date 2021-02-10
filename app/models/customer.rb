@@ -4,33 +4,33 @@ class Customer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   validates :name, :email, :postal_code, :address, presence: true
-  validates :is_deleted, inclusion:{in: [true, false]}
+  validates :is_deleted, inclusion: { in: [true, false] }
 
   has_many :reviews
 
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |customer|
-    customer.password = SecureRandom.urlsafe_base64
+      customer.password = SecureRandom.urlsafe_base64
     end
   end
 
   def active_for_authentication?
-    super && (self.is_deleted == false)
+    super && (is_deleted == false)
   end
 
   def total_point
-    unless self.reviews.empty?
-      reviews.count*10
-    else
+    if reviews.empty?
       0
+    else
+      reviews.count * 10
     end
   end
 
   def avg_value
-    unless self.reviews.empty?
-      reviews.average(:value).to_f
+    if reviews.empty?
+      0
     else
-      0.0
+      reviews.average(:value).to_f
     end
   end
 end

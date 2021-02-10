@@ -1,5 +1,5 @@
 class Admin::ReviewsController < ApplicationController
-before_action :authenticate_admin!
+  before_action :authenticate_admin!
 
   def index
     @reviews = Review.all.page(params[:page]).per(5)
@@ -8,7 +8,7 @@ before_action :authenticate_admin!
   def show
     @review = Review.find(params[:id])
   end
-  
+
   require 'csv'
 
   def new
@@ -23,6 +23,7 @@ before_action :authenticate_admin!
   end
 
   private
+
   def send_posts_csv(posts)
     csv_data = CSV.generate do |csv|
       column_names = %w(投稿者名 商品名 商品評価 良い点 悪い点 改善点)

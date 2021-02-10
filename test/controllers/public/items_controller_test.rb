@@ -10,5 +10,4 @@ class ItemsControllerTest < ActionDispatch::IntegrationTest
     get items_show_url
     assert_response :success
   end
-
 end
