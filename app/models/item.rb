@@ -3,20 +3,21 @@ class Item < ApplicationRecord
   has_many :reviews
   attachment :image
   validates :name, presence: true, uniqueness: true
-
+  validates :name, length: { in: 1..20 }
+  
   def avg_value
-    if reviews.empty?
-      0.0
-    else
+    unless self.reviews.empty?
       reviews.average(:value).to_f
+    else
+      0.0
     end
   end
 
   def review_value_percentage
-    if reviews.empty?
-      0.0
+    unless self.reviews.empty?
+      reviews.average(:value).to_f*100/5
     else
-      reviews.average(:value).to_f * 100 / 5
+      0.0
     end
   end
 end

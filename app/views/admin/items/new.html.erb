@@ -1,8 +1,14 @@
 <div class="container">
   <div class="row no-gutters">
     <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto text-center shadow-lg rounded px-0 my-5">
-      <h5 class="text-dark bg-light p-4 mb-0">商品新規登録</h5>
+      <h4 class="text-dark bg-light p-4 mb-0"><strong>商品新規登録</strong></h4>
       <div class="form-body p-4 bg-light">
+        <% if @item.errors.any? %>
+          <%= @item.errors.count %>件のエラーが発生しました
+          <% @item.errors.full_messages.each do |message| %>
+            <%= message %>
+          <% end %>
+        <% end %>
         <%= form_with model:@item,url: admin_items_path,local:true do |f| %>
           <%= f.attachment_field :image, class: "w-100" %>
           <div class="input-group mb-3 mt-4">

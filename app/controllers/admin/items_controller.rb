@@ -15,7 +15,6 @@ class Admin::ItemsController < ApplicationController
       flash[:notice] = "新商品を登録しました!!"
       redirect_to admin_item_path(@item)
     else
-      flash[:notice] = "入力漏れがあります"
       render :new
     end
   end
@@ -34,7 +33,6 @@ class Admin::ItemsController < ApplicationController
       flash[:notice] = "商品を編集しました。"
       redirect_to admin_item_path(@item)
     else
-      flash[:notice] = "入力漏れがあります"
       render :edit
     end
   end

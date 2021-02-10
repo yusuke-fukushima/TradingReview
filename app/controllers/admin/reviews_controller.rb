@@ -30,9 +30,9 @@ class Admin::ReviewsController < ApplicationController
       csv << column_names
       posts.each do |post|
         column_values = [
-          # post.datetime,
+          post.review.datetime,
           post.customer.name,
-          post.item,
+          post.item.name,
           post.value,
           post.good_point,
           post.bad_point,

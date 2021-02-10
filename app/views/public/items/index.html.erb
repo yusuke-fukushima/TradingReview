@@ -1,10 +1,10 @@
 <div class="container">
   <div class="row no-gutters">
     <div class="col-md-8 col-sm-10 mx-2 mx-sm-auto text-center shadow-lg px-0 my-5">
-      <h5 class="text-dark bg-light py-4 mb-0"><%= @genre.name %>の商品一覧</h5>
-      <div class="p-4 bg-light d-flex flex-wrap justify-content-center">
+      <h4 class="text-dark bg-light py-4 mb-0"><strong><%= @genre.name %>の商品一覧</strong></h4>
+      <div class="p-10 bg-light d-flex flex-wrap justify-content-center">
         <% @items.each do |item| %>
-          <%= link_to public_genre_item_path(@genre.id,item.id), class: "m-2", :style=>"color:black;" do %>
+          <%= link_to public_genre_item_path(@genre.id,item.id), class: "mx-5", :style=>"color:black;" do %>
             <p><%= attachment_image_tag(item, :image, size: "200x200", fallback: "no_image.jpg") %></p>
             <p><%= item.name %></p>
           <% end %>

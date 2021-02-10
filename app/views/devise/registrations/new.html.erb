@@ -1,13 +1,13 @@
 <div class="container">
   <div class="row no-gutters">
     <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto text-center shadow-lg rounded px-0 my-5">
-      <h5 class="text-dark bg-light py-4 mb-0">新規登録</h5>
-      <div class="form-body p-4">
+      <h4 class="text-dark bg-light py-4 mb-0"><strong>新規登録</strong></h4>
+      <div class="form-body p-4 bg-light">
         <div class="mx-auto text-center">
           <p>下記項目を入力してください。</p>
         </div>
         <%= form_with model: @customer, url: customer_registration_path, id: 'new_customer', class: 'new_customer', local: true do |f| %>
-          <%= render "devise/shared/error_messages", resource: resource %>
+          <%= render "layouts/error_messages", resource: resource %>
           <div class="input-group mb-3">
             <div class="input-group-prepend">
               <span class="input-group-text" aria-hidden="true"><i class="fas fa-user"></i></span>
@@ -24,7 +24,7 @@
             <div class="input-group-prepend">
               <span class="input-group-text" aria-hidden="true"><i class="fas fa-tenge"></i></span>
             </div>
-            <%= f.text_field :postal_code, autofocus: true, class:"form-control", id:"inputPostalcode", placeholder: '郵便番号' %>
+            <%= f.text_field :postal_code, autofocus: true, class:"form-control", id:"inputPostalcode", placeholder: '郵便番号(ハイフンなし)' %>
           </div>
           <div class="input-group mb-3">
             <div class="input-group-prepend">
