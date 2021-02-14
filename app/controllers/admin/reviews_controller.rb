@@ -1,5 +1,6 @@
 class Admin::ReviewsController < ApplicationController
   before_action :authenticate_admin!
+  before_action :set_search
 
   def index
     @reviews = Review.all.page(params[:page]).per(5)
@@ -7,6 +8,11 @@ class Admin::ReviewsController < ApplicationController
 
   def show
     @review = Review.find(params[:id])
+  end
+  
+  def set_search
+    @search = Review.ransack(params[:q])
+    @reviews = @search.result
   end
 
   require 'csv'
@@ -30,7 +36,6 @@ class Admin::ReviewsController < ApplicationController
       csv << column_names
       posts.each do |post|
         column_values = [
-          post.review.datetime,
           post.customer.name,
           post.item.name,
           post.value,

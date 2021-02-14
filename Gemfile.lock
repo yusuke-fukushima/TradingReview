@@ -99,6 +99,13 @@ GEM
       railties (>= 3.2)
     erubi (1.10.0)
     execjs (2.7.0)
+    factory_bot (6.1.0)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.1.0)
+      factory_bot (~> 6.1.0)
+      railties (>= 5.0.0)
+    faker (2.16.0)
+      i18n (>= 1.6, < 2)
     ffi (1.14.2)
     font-awesome-sass (5.15.1)
       sassc (>= 1.11)
@@ -196,6 +203,10 @@ GEM
       thor (>= 0.19.0, < 2.0)
     rainbow (3.0.0)
     rake (13.0.3)
+    ransack (2.4.2)
+      activerecord (>= 5.2.4)
+      activesupport (>= 5.2.4)
+      i18n
     rb-fsevent (0.10.4)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
@@ -324,6 +335,8 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   devise
   dotenv-rails
+  factory_bot_rails
+  faker
   font-awesome-sass (~> 5.13)
   jbuilder (~> 2.5)
   jquery-rails
@@ -332,6 +345,7 @@ DEPENDENCIES
   mysql2
   puma (~> 3.11)
   rails (~> 5.2.4)
+  ransack
   refile!
   refile-mini_magick
   rspec-rails

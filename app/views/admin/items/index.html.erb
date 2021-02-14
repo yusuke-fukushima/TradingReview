@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row no-gutters">
-    <div class="col-md-8 col-sm-10 mx-2 mx-sm-auto text-center shadow-lg px-0 my-5">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 mx-auto text-center shadow-lg px-0 my-5">
       <h4 class="text-dark bg-light py-4 mb-0"><strong>商品一覧</strong></h4>
       <div class="p-4 bg-light">
         <table class="table table-bordered mt-2">
@@ -35,7 +35,7 @@
             <% end %>
           </tbody>
         </table>
-        <%= link_to "新規登録", new_admin_item_path, class:"btn btn-block btn-success mt-5 mb-5" %>
+        <%= link_to "新規登録", new_admin_item_path, class:"btn btn-block btn-success mb-3" %>
         <%= paginate @items %>
       </div>
     </div>
