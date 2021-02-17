@@ -2,9 +2,10 @@ class Item < ApplicationRecord
   belongs_to :genre
   has_many :reviews
   attachment :image
-  validates :name, presence: true, uniqueness: true
-  validates :name, length: { in: 1..20 }
-  
+  validates :name, :detail, presence: true, uniqueness: true
+  validates :name, :detail, length: {maximum: 20, minimum: 2}
+  validate :image_should_be_present
+
   def avg_value
     unless self.reviews.empty?
       reviews.average(:value).to_f
@@ -19,5 +20,13 @@ class Item < ApplicationRecord
     else
       0.0
     end
+  end
+
+  private
+
+  def image_should_be_present
+    return if image.present?
+
+    errors.add(:image_id, 'should be attached')
   end
 end

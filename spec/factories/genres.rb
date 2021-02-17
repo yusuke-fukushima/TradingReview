@@ -1,5 +1,6 @@
 FactoryBot.define do
   factory :genre do
-    name { Faker::Lorem.characters(number: 5) }
+    image { Rack::Test::UploadedFile.new(File.join(Rails.root, 'app/assets/images/no_image.jpg'), 'image/jpg') }
+    name { Faker::Name.name }
   end
 end

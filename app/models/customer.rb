@@ -3,7 +3,8 @@ class Customer < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  validates :name, :postal_code, :address, presence: true
+  validates :name, :postal_code, :address, :encrypted_password, presence: true, uniqueness: true
+  validates :name, length: {maximum: 20, minimum: 2}
   validates :is_deleted, inclusion: { in: [true, false] }
 
   has_many :reviews

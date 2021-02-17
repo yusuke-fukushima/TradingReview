@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe 'Userモデルのテスト', type: :model do
+RSpec.describe 'Customerモデルのテスト', type: :model do
   describe 'バリデーションのテスト' do
-    subject { user.valid? }
+    subject { customer.valid? }
 
     let!(:other_customer) { create(:customer) }
     let(:customer) { build(:customer) }
@@ -33,7 +33,7 @@ RSpec.describe 'Userモデルのテスト', type: :model do
         is_expected.to eq false
       end
     end
-    
+
     context 'emailカラム' do
       it '空欄でないこと' do
         customer.email = ''
@@ -44,7 +44,7 @@ RSpec.describe 'Userモデルのテスト', type: :model do
         is_expected.to eq false
       end
     end
-    
+
     context 'postal_codeカラム' do
       it '空欄でないこと' do
         customer.postal_code = ''
@@ -55,7 +55,7 @@ RSpec.describe 'Userモデルのテスト', type: :model do
         is_expected.to eq false
       end
     end
-    
+
     context 'addressカラム' do
       it '空欄でないこと' do
         customer.address = ''
@@ -66,14 +66,10 @@ RSpec.describe 'Userモデルのテスト', type: :model do
         is_expected.to eq false
       end
     end
-    
+
     context 'passwordカラム' do
       it '空欄でないこと' do
         customer.password = ''
-        is_expected.to eq false
-      end
-      it '一意性があること' do
-        customer.password = other_customer.password
         is_expected.to eq false
       end
     end

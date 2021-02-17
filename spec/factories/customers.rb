@@ -1,9 +1,9 @@
 FactoryBot.define do
   factory :customer do
-    name { Faker::Lorem.characters(number: 10) }
+    name { Faker::Name.name }
     email { Faker::Internet.email }
-    postal_code { Faker::Internet.email }
-    address { Faker::Internet.email }
+    postal_code { Faker::Address.postcode }
+    address { Faker::Address.city }
     password { 'password' }
     password_confirmation { 'password' }
   end
