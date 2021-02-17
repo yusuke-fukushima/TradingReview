@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 describe '[STEP3] ユーザログイン後のテスト' do
-  let!(:other_customer) { create(:customer) }
-  let(:customer) { build(:customer) }
-
+  let(:customer) { create(:customer) }
+  let(:genre) { create(:genre) }
+  
   before do
     visit new_customer_session_path
     fill_in 'customer[name]', with: customer.name
@@ -11,48 +11,37 @@ describe '[STEP3] ユーザログイン後のテスト' do
     fill_in 'customer[password]', with: customer.password
     click_button 'ログイン'
   end
-
-  describe 'ヘッダーのテスト: ログインしている場合' do
-    context 'リンクの内容を確認: ※logoutは『ユーザログアウトのテスト』でテスト済みになります。' do
-      subject { current_path }
-      
+  
+  describe 'ヘッダーのテスト' do
+    
+    context 'リンクの内容を確認' do
       it 'マイページを押すと、マイページ画面に遷移する' do
-        customer_link = find_all('a')[1].native.inner_text
-        customer_link = customer_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
-        click_link customer_link
-        is_expected.to eq 'public/customers/' + customer.id.to_s
+        expect(page).to have_link 'マイページ'
+        click_link 'マイページ', href: public_customer_path(customer.id)
       end
-      
       it 'ジャンル一覧を押すと、ジャンル一覧画面に遷移する' do
-        genres_link = find_all('a')[2].native.inner_text
-        genres_link = genres_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
-        click_link genres_link
-        is_expected.to eq 'public/genres'
+        expect(page).to have_link 'ジャンル一覧'
+        click_link 'ジャンル一覧', href: public_genres_path
       end
-      
     end
+    
   end
 
   describe 'マイページ画面のテスト' do
-    before do
+     before do
       visit public_customer_path(customer.id)
     end
     
     context '表示内容の確認' do
       it 'URLが正しい' do
-        expect(current_path).to eq '/public/customer/' + Customer.last.id.to_s
+        expect(current_path).to eq '/public/customers/' + customer.id.to_s
       end
-      it '自分のユーザ編集画面へのリンクが存在する' do
-        expect(page).to have_link '', href: edit_public_customer_path(customer.id)
+      it '編集するを押すと、編集画面に遷移する' do
+        expect(page).to have_link '編集する'
+        click_link '編集する', href: edit_public_customer_path(customer.id)
       end
     end
     
-    context '編集リンクのテスト' do
-      it '編集画面に遷移する' do
-        click_link '編集する'
-        expect(current_path).to eq '/public/customers/' + customer.id.to_s + '/edit'
-      end
-    end
   end
   
   describe '自分のユーザ情報編集画面のテスト' do
@@ -89,8 +78,8 @@ describe '[STEP3] ユーザログイン後のテスト' do
         @customer_old_address = customer.address
         fill_in 'customer[name]', with: Faker::Name.name
         fill_in 'customer[email]', with: Faker::Internet.email
-        fill_in 'customer[postal_code]', with: Faker::Address.postal_code
-        fill_in 'customer[address]', with: Faker::Address.address
+        fill_in 'customer[postal_code]', with: Faker::Address.postcode
+        fill_in 'customer[address]', with: Faker::Address.city
         click_button '編集内容を保存'
       end
 
@@ -100,10 +89,10 @@ describe '[STEP3] ユーザログイン後のテスト' do
       it 'emailが正しく更新される' do
         expect(customer.reload.email).not_to eq @customer_old_email
       end
-      it 'nameが正しく更新される' do
+      it 'postal_codeが正しく更新される' do
         expect(customer.reload.postal_code).not_to eq @customer_old_postal_code
       end
-      it 'nameが正しく更新される' do
+      it 'addressが正しく更新される' do
         expect(customer.reload.address).not_to eq @customer_old_address
       end
       it 'リダイレクト先が、自分のユーザ詳細画面になっている' do
@@ -112,47 +101,48 @@ describe '[STEP3] ユーザログイン後のテスト' do
     end
   end
   
-  # describe 'ジャンル一覧画面のテスト' do
-  #   before do
-  #     visit public_genres_path
-  #   end
+  describe 'ジャンル一覧画面のテスト' do
+    before do
+      visit public_genres_path
+    end
 
-  #   context '表示の確認' do
-  #     it 'URLが正しい' do
-  #       expect(current_path).to eq '/public/genres'
-  #     end
-  #     it 'ジャンル一覧が表示される' do
-  #       expect(page).to have_content 'ジャンル一覧'
-  #     end
-  #     # it 'ジャンルの画像が表示される' do
-  #     #   expect(page).to have_button 'Update Customer'
-  #     # end
-  #     it 'ジャンルの商品一覧リンクが表示される' do
-  #       expect(page).to have_link '', href: public_genre_items_path(genre.id)
-  #     end
-  #   end
-  # end
+    context '表示の確認' do
+      it 'URLが正しい' do
+        expect(current_path).to eq '/public/genres'
+      end
+      it 'ジャンル一覧が表示される' do
+        expect(page).to have_content 'ジャンル一覧'
+      end
+      # it 'ジャンルの画像が表示される' do
+      #   expect(page).to have_button 'Update Customer'
+      # end
+      # it '商品一覧リンクが表示される' do
+      #   expect(page).to have_link '商品一覧'
+      #   click_link '商品一覧', href: public_genre_items_path(genre.id)
+      # end
+    end
+  end
   
-  # describe '商品一覧画面のテスト' do
-  #   before do
-  #     visit public_genre_items_path
-  #   end
+  describe '商品一覧画面のテスト' do
+    before do
+      visit public_genre_items_path(genre.id)
+    end
 
-  #   context '表示の確認' do
-  #     it 'URLが正しい' do
-  #       expect(current_path).to eq '/public/genres' + genre.id.to_s + '/items'
-  #     end
-  #     it '商品一覧が表示される' do
-  #       expect(page).to have_content '商品一覧'
-  #     end
-  #     # it '商品の画像が表示される' do
-  #     #   expect(page).to have_button 'Update Customer'
-  #     # end
-  #     it '商品詳細リンクが表示される' do
-  #       expect(page).to have_link '', href: public_genre_item_path(genre.id,item.id)
-  #     end
-  #   end
-  # end
+    context '表示の確認' do
+      it 'URLが正しい' do
+        expect(current_path).to eq '/public/genres/' + genre.id.to_s + '/items'
+      end
+      # it '商品一覧が表示される' do
+      #   expect(page).to have_content '商品一覧'
+      # end
+      # # it '商品の画像が表示される' do
+      # #   expect(page).to have_button 'Update Customer'
+      # # end
+      # it '商品詳細リンクが表示される' do
+      #   expect(page).to have_link '', href: public_genre_item_path(genre.id,item.id)
+      # end
+    end
+  end
   
   # describe '商品詳細画面のテスト' do
   #   before do
@@ -176,7 +166,8 @@ describe '[STEP3] ユーザログイン後のテスト' do
   #       expect(page).to have_content item.detail
   #     end
   #     it '投稿画面に進むリンクが表示される' do
-  #       expect(page).to have_link '', href: new_public_review_path(item_id: item.id)
+  #       expect(page).to have_link '投稿画面に進む'
+  #       click_link '投稿画面に進む', href: new_public_review_path(item_id: item.id)
   #     end
   #   end
   # end

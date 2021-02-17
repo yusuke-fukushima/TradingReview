@@ -90,25 +90,20 @@ describe '[STEP2] 管理者ログイン前のテスト' do
       it 'タイトルが表示される' do
         expect(page).to have_content 'TradingReview'
       end
-      it '商品一覧リンクが表示される: 左上から1番目のリンクが「商品一覧」である' do
-        items_link = find_all('a')[1].native.inner_text
-        expect(items_link).to match(admin/items)
+      it '商品一覧リンクが表示される' do
+        expect(page).to have_link '商品一覧'
       end
-      it 'ジャンル一覧リンクが表示される: 左上から2番目のリンクが「ジャンル一覧」である' do
-        genres_link = find_all('a')[2].native.inner_text
-        expect(genres_link).to match(admin/genres)
+      it 'ジャンル一覧リンクが表示される' do
+        expect(page).to have_link 'ジャンル一覧'
       end
-      it '会員一覧リンクが表示される: 左上から3番目のリンクが「会員一覧」である' do
-        customers_link = find_all('a')[3].native.inner_text
-        expect(customers_link).to match(admin/customers)
+      it '会員一覧リンクが表示される' do
+        expect(page).to have_link '会員一覧'
       end
-      it 'レビュー履歴一覧リンクが表示される: 左上から4番目のリンクが「レビュー履歴一覧」である' do
-        reviews_link = find_all('a')[4].native.inner_text
-        expect(reviews_link).to match(admin/reviews)
+      it 'レビュー履歴一覧リンクが表示される' do
+        expect(page).to have_link 'レビュー履歴一覧'
       end
-      it 'リンクが表示される: 左上から5番目のリンクが「ログアウト」である' do
-        logout_link = find_all('a')[5].native.inner_text
-        expect(logout_link).to match(admin/logout/i)
+      it 'ログアウトリンクが表示される' do
+        expect(page).to have_link 'ログアウト'
       end
     end
   end

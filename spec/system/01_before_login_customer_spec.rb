@@ -112,7 +112,7 @@ describe '[STEP1] ユーザログイン前のテスト' do
     context 'ログイン成功のテスト' do
       before do
         fill_in 'customer[name]', with: customer.name
-        fill_in 'customer[email]', with: customer.name
+        fill_in 'customer[email]', with: customer.email
         fill_in 'customer[password]', with: customer.password
         click_button 'ログイン'
       end
@@ -151,17 +151,14 @@ describe '[STEP1] ユーザログイン前のテスト' do
       it 'タイトルが表示される' do
         expect(page).to have_content 'TradingReview'
       end
-      it 'マイページリンクが表示される: 左上から1番目のリンクが「マイページ」である' do
-        customers_link = find_all('a')[1].native.inner_text
-        expect(customers_link).to match(public/customers/i)
+      it 'マイページリンクが表示される' do
+        expect(page).to have_link 'マイページ'
       end
-      it 'ジャンル一覧リンクが表示される: 左上から2番目のリンクが「ジャンル一覧」である' do
-        genres_link = find_all('a')[2].native.inner_text
-        expect(genres_link).to match(public/genres)
+      it 'ジャンル一覧リンクが表示される' do
+        expect(page).to have_link 'ジャンル一覧'
       end
-      it 'リンクが表示される: 左上から3番目のリンクが「ログアウト」である' do
-        logout_link = find_all('a')[3].native.inner_text
-        expect(logout_link).to match(public/logout/i)
+      it 'ログアウトリンクが表示される' do
+        expect(page).to have_link 'ログアウト'
       end
     end
   end
