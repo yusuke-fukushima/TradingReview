@@ -27,7 +27,10 @@
             </tr>
           </tbody>
         </table>
-        <%= link_to "編集する", edit_public_customer_path(@customer.id), class:"btn btn-block btn-primary mt-5" %>
+        <% if @customer.name != 'ゲスト' %>
+          <%= link_to "編集する", edit_public_customer_path(@customer.id), class:"btn btn-block btn-primary mt-5" %>
+        <% else %>
+        <% end %>
       </div>
     </div>
   </div>
