@@ -2,7 +2,8 @@ class Item < ApplicationRecord
   belongs_to :genre
   has_many :reviews
   attachment :image
-  validates :name, :detail, presence: true, uniqueness: true
+  validates :name, presence: true, uniqueness: true
+  validates :detail, presence: true
   validates :name, :detail, length: {maximum: 20, minimum: 2}
   validate :image_should_be_present
 

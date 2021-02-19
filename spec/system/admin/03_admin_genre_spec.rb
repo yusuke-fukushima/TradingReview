@@ -1,16 +1,16 @@
 require 'rails_helper'
 
-describe '[STEP3] 管理者ログイン後のジャンル一覧のテスト' do
+describe '[STEP3] 管理者ジャンル一覧のテスト' do
   let(:admin) { create(:admin) }
   let!(:genre) { create(:genre) }
-  
+
   before do
     visit new_admin_session_path
     fill_in 'admin[email]', with: admin.email
     fill_in 'admin[password]', with: admin.password
     click_button 'ログイン'
   end
-  
+
   describe 'ジャンル一覧画面のテスト' do
     before do
       visit admin_genres_path
@@ -30,12 +30,12 @@ describe '[STEP3] 管理者ログイン後のジャンル一覧のテスト' do
       end
     end
   end
-  
+
   describe 'ジャンル編集画面のテスト' do
     before do
       visit edit_admin_genre_path(genre.id)
     end
-
+    
     context '表示の確認' do
       it 'URLが正しい' do
         expect(current_path).to eq '/admin/genres/' + genre.id.to_s + '/edit'
@@ -54,7 +54,7 @@ describe '[STEP3] 管理者ログイン後のジャンル一覧のテスト' do
         fill_in 'genre[name]', with: Faker::Name.name
         click_button '変更内容保存'
       end
-
+      
       it 'nameが正しく更新される' do
         expect(genre.reload.name).not_to eq @genre_old_name
       end
@@ -63,7 +63,7 @@ describe '[STEP3] 管理者ログイン後のジャンル一覧のテスト' do
       end
     end
   end
-  
+
   describe 'ジャンル新規登録画面のテスト' do
      before do
       visit new_admin_genre_path
@@ -86,15 +86,17 @@ describe '[STEP3] 管理者ログイン後のジャンル一覧のテスト' do
 
     context '新規登録成功のテスト' do
       before do
+        file_path = Rails.root.join('spec', 'fixtures', 'no_image.jpg')
+        attach_file('genre[image]', file_path)
         fill_in 'genre[name]', with: Faker::Name.name
       end
-
+      
       it '正しく新規登録される' do
-        expect { click_button '新規登録' }.to change(Gnere.all, :count).by(1)
+        expect { click_button '新規登録' }.to change(Genre.all, :count).by(1)
       end
       it '新規登録後のリダイレクト先が、新規登録できた商品の詳細画面になっている' do
         click_button '新規登録'
-        expect(current_path).to eq '/admin/genres/' + Genre.last.id.to_s
+        expect(current_path).to eq '/admin/genres'
       end
     end
   end

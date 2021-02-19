@@ -1,10 +1,11 @@
 require 'rails_helper'
 
-describe '[STEP3] 管理者ログイン後の商品一覧のテスト' do
+describe '[STEP5] 管理者レビュー一覧のテスト' do
   let(:admin) { create(:admin) }
-  let(:review) { create(:review) }
-  let(:item) { create(:item) }
-  
+  let!(:item) { create(:item) }
+  let!(:review) { create(:review, item_id: item.id) }
+
+
   before do
     visit new_admin_session_path
     fill_in 'admin[email]', with: admin.email
@@ -21,15 +22,15 @@ describe '[STEP3] 管理者ログイン後の商品一覧のテスト' do
       it 'URLが正しい' do
         expect(current_path).to eq '/admin/reviews'
       end
-      # it 'item.nameを押すと、レビュー詳細画面に遷移する' do
-      #   expect(page).to have_link item.name, href: admin_review_path(review.id)
-      #   click_link item.name, href: admin_review_path(review.id)
-      # end
-      # it 'csvで出力するボタンが表示される' do
-      #   expect(page).to have_button 'csvで出力する'
-      # end
+      it 'csvで出力するボタンが表示される' do
+        expect(page).to have_link 'csvで出力する'
+        click_link 'csvで出力する', href:  new_admin_review_path(format: :csv)
+      end
+      it '商品名を押すと、レビュー詳細画面に遷移する' do
+        expect(page).to have_link item.name, href: admin_review_path(review)
+        click_link item.name, href: admin_review_path(review)
+      end
     end
-    
   end
   
   describe 'レビュー詳細画面のテスト' do
@@ -42,6 +43,5 @@ describe '[STEP3] 管理者ログイン後の商品一覧のテスト' do
         expect(current_path).to eq '/admin/reviews/' + review.id.to_s
       end
     end
-    
   end
 end
