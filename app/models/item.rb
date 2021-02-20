@@ -4,7 +4,8 @@ class Item < ApplicationRecord
   attachment :image
   validates :name, presence: true, uniqueness: true
   validates :detail, presence: true
-  validates :name, :detail, length: {maximum: 100, minimum: 2}
+  validates :name, length: {maximum: 20, minimum: 2}
+  validates :detail, length: {maximum: 100, minimum: 2}
   validate :image_should_be_present
 
   def avg_value
