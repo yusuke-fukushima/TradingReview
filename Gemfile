@@ -69,6 +69,7 @@ gem 'font-awesome-sass', '~> 5.13'
 gem 'rubocop-airbnb'
 gem 'kaminari', '~> 1.2.1'
 gem 'ransack'
+gem "aws-sdk-s3", require: false
 
 gem 'dotenv-rails'
 group :production do

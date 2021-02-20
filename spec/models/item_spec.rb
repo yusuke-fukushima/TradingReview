@@ -49,12 +49,12 @@ RSpec.describe 'Itemモデルのテスト', type: :model do
         item.detail = Faker::Lorem.characters(number: 2)
         is_expected.to eq true
       end
-      it '20文字以下であること: 20文字は〇' do
-        item.detail = Faker::Lorem.characters(number: 20)
+      it '100文字以下であること: 100文字は〇' do
+        item.detail = Faker::Lorem.characters(number: 100)
         is_expected.to eq true
       end
-      it '20文字以下であること: 21文字は×' do
-        item.detail = Faker::Lorem.characters(number: 21)
+      it '100文字以下であること: 101文字は×' do
+        item.detail = Faker::Lorem.characters(number: 101)
         is_expected.to eq false
       end
     end

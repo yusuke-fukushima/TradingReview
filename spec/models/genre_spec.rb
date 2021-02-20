@@ -26,11 +26,11 @@ RSpec.describe 'Genreモデルのテスト', type: :model do
         genre.name = Faker::Lorem.characters(number: 2)
         is_expected.to eq true
       end
-      it '20文字以下であること: 20文字は〇' do
+      it '100文字以下であること: 20文字は〇' do
         genre.name = Faker::Lorem.characters(number: 20)
         is_expected.to eq true
       end
-      it '20文字以下であること: 21文字は×' do
+      it '100文字以下であること: 21文字は×' do
         genre.name = Faker::Lorem.characters(number: 21)
         is_expected.to eq false
       end

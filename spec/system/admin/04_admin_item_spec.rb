@@ -59,7 +59,7 @@ describe '[STEP4] 管理者商品一覧のテスト' do
         expect(current_path).to eq '/admin/items/' + item.id.to_s + '/edit'
       end
       it 'ジャンル名編集フォームにジャンル名が表示される' do
-        expect(page).to have_select('genre[name]', :options => ['genre.name'])
+        expect(page).to have_select('item[genre_id]', selected: genre.name)
       end
       it '商品名編集フォームに商品名が表示される' do
         expect(page).to have_field 'item[name]', with: item.name
@@ -77,14 +77,14 @@ describe '[STEP4] 管理者商品一覧のテスト' do
         @genre_old_name = genre.name
         @item_old_email = item.name
         @item_old_detail = item.detail
-        fill_in 'genre[name]', with: Faker::Name.name
+        select(value = genre.name, from: "item[genre_id]")
         fill_in 'item[name]', with: Faker::Name.name
         fill_in 'item[detail]', with: Faker::Lorem
         click_button '変更内容保存'
       end
 
       it 'genre.nameが正しく更新される' do
-        expect(genre.reload.name).not_to eq @genre_old_name
+        expect(genre.reload.name).to eq @genre_old_name
       end
       it '商品名が正しく更新される' do
         expect(item.reload.name).not_to eq @item_old_name
@@ -102,7 +102,7 @@ describe '[STEP4] 管理者商品一覧のテスト' do
     before do
       visit new_admin_item_path
     end
-    
+
     context '表示内容の確認' do
       it 'URLが正しい' do
         expect(current_path).to eq '/admin/items/new'
@@ -111,7 +111,8 @@ describe '[STEP4] 管理者商品一覧のテスト' do
         expect(page).to have_content '新規登録'
       end
       it 'genre.nameフォームが表示される' do
-        expect(page).to have_select('genre', :options => ['genre.name'])
+        select(value = genre.name, from: "item[genre_id]")
+        expect(page).to have_select('item[genre_id]', selected: genre.name)
       end
       it 'item.nameフォームが表示される' do
         expect(page).to have_field 'item[name]'
@@ -123,22 +124,22 @@ describe '[STEP4] 管理者商品一覧のテスト' do
         expect(page).to have_button '新規登録'
       end
     end
-    
+
     context '新規登録成功のテスト' do
       before do
         file_path = Rails.root.join('spec', 'fixtures', 'no_image.jpg')
-        attach_file('genre[image]', file_path)
-        fill_in 'genre[name]', with: Faker::Name.name
+        attach_file('item[image]', file_path)
+        select(value = genre.name, from: "item[genre_id]")
         fill_in 'item[name]', with: Faker::Name.name
         fill_in 'item[detail]', with: Faker::Lorem
       end
-      
+
       it '正しく新規登録される' do
         expect { click_button '新規登録' }.to change(Item.all, :count).by(1)
       end
       it '新規登録後のリダイレクト先が、新規登録できた商品の詳細画面になっている' do
         click_button '新規登録'
-        expect(current_path).to eq '/admin/items'
+        expect(current_path).to eq '/admin/items/' + Item.last.id.to_s
       end
     end
   end
