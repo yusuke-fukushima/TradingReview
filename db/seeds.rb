@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
 Admin.create!(
   email: 'admin@admin',
   password: 'adminadmin'
@@ -150,3 +151,29 @@ Customer.create!(
       }
     ]
   )
+  
+  # Review.create!(
+  #   [
+  #     {
+  #       customer_id: 1,
+  #       item_id: 1,
+  #       value: 1,
+  #       good_point: "ない",
+  #       bad_point: "高い、ダサい、機能がショボすぎる",
+  #       improvement_point: "全部",
+  #     }
+  #   ]
+  # )
+  
+require "csv"
+
+CSV.foreach('db/review.csv', headers: true) do |row|
+  Review.create(
+    customer_id: row['customer_id'],
+    item_id: row['item_id'],
+    value: row['value'],
+    good_point: row['good_point'],
+    bad_point: row['bad_point'],
+    improvement_point: row['improvement_point'],
+  )
+end
