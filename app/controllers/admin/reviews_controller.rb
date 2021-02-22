@@ -12,7 +12,7 @@ class Admin::ReviewsController < ApplicationController
   
   def set_search
     @search = Review.ransack(params[:q])
-    @reviews = @search.result
+    @reviews = @search.result.page(params[:page]).per(5)
   end
 
   require 'csv'

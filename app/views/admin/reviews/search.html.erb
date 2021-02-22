@@ -39,6 +39,8 @@
             <% end %>
           </tbody>
         </table>
+        <%= paginate @reviews %>
+        <%= link_to "csvで出力する",new_admin_review_path(format: :csv), class:"btn btn-block btn-primary" %>
       </div>
     </div>
   </div>

@@ -5,6 +5,8 @@
       <div class="bg-light">
         <%= search_form_for @search, url: search_admin_reviews_path do |f| %>
           <%= f.search_field :item_name_eq %>
+          <%= f.number_field :value_gteq, {min: 1, max: 5} %>以上〜
+          <%= f.number_field :value_lteq, {min: 1, max: 5} %>以下
           <%= f.submit '検索' %>
         <% end %>
       </div>
@@ -45,6 +47,7 @@
             <% end %>
           </tbody>
         </table>
+        <%= paginate @reviews %>
         <%= link_to "csvで出力する",new_admin_review_path(format: :csv), class:"btn btn-block btn-primary" %>
       </div>
     </div>
