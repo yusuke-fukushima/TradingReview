@@ -9,17 +9,24 @@ class Admin::ReviewsController < ApplicationController
   def show
     @review = Review.find(params[:id])
   end
-  
+
   def set_search
     @search = Review.ransack(params[:q])
     @reviews = @search.result.page(params[:page]).per(5)
+    @params ={}
+    if params[:q] 
+      params[:q].each do | key,value|  
+        @params[key] = value
+      end
+    end
   end
 
   require 'csv'
 
   def new
     @review = Review.new
-    @reviews = Review.all
+    @search = Review.ransack(params[:q])
+    @reviews = @search.result
     respond_to do |format|
       format.html
       format.csv do |csv|
