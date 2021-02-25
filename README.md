@@ -23,8 +23,8 @@
 レビューをしてポイントを稼ぎたい時
 
 ## 設計書
-https://docs.google.com/presentation/d/1azDChW1vzgpT03zJX--uip2w7AATxB8ASriuDYbc9Vk/edit?usp=sharing
-
+テーブル定義書
+https://docs.google.com/spreadsheets/d/1lxqjiYGWChO9c5HG6vYcdtWBbh3Q1yJNrp0xmKGyNzc/edit?usp=sharing
 
 ## チャレンジ要素一覧
 https://docs.google.com/spreadsheets/d/1GixniUkmMtoQUQIbl4_a1gegywtDDSDSYoEGK9CQfa8/edit?usp=sharing
