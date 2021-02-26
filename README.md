@@ -13,7 +13,7 @@
 ### テーマを選んだ理由
  中国のアリババのビジネスが素晴らしいと思ったから
  中国のアリババでは、意思決定を自動化することにより、消費者が求めている商品を素早く設計、製造、販売まで持っていくことができます。
- 消費者は欲しいものを手に入れることができ、会社は、無駄な意思決定を減らし、売上アップに繋げられるメリットがこのサイトにあります。
+ 消費者は欲しいものを手に入れることができ、会社は、無駄な意思決定を減らし、売上アップに繋げられるメリットがこのアプリケーションにあります。
 
 
 ### ターゲットユーザ
@@ -23,8 +23,12 @@
 レビューをしてポイントを稼ぎたい時
 
 ## 設計書
+ER図
+https://drive.google.com/file/d/1_jJbT8c2Ug7_FjkcJFqStRhH1E5Gcri3/view?usp=sharing
 テーブル定義書
 https://docs.google.com/spreadsheets/d/1lxqjiYGWChO9c5HG6vYcdtWBbh3Q1yJNrp0xmKGyNzc/edit?usp=sharing
+アプリケーション詳細設計書
+https://docs.google.com/spreadsheets/d/1nNafzd_jTdvjom8MyIEOGV08oya-yumtDI_na04OwuQ/edit?usp=sharing
 
 ## チャレンジ要素一覧
 https://docs.google.com/spreadsheets/d/1GixniUkmMtoQUQIbl4_a1gegywtDDSDSYoEGK9CQfa8/edit?usp=sharing
