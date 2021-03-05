@@ -1,34 +1,40 @@
 # <TradingReview>
 
 ## サイト概要
- 企業の商品のレビューを10ポイント（今回現金がNGということなのでポイント制度）と交換するサイトです。
- 今後、ポイントを使っての決済機能を付けたいですが、技術不足なので、付けておらず、ポイントが溜まるだけのシステムになっています。
- 企業の商品（今回は架空の商品）を掲載をさせていただき、消費者はその商品についてレビューをします。
- 企業は消費者からのレビューを元にデータ解析し、最終的には、そのデータ解析を元に企業にコンサルティングをしていきたいという構想があります。
-
+ TradingReviewは商品のレビューとポイントを交換するアプリケーションです</br>
+ アプリケーションプレゼン資料</br>
+ https://docs.google.com/presentation/d/1GklOwrFbiaT1RTeoHe9racPLVkSwgajColVKEjV_B8Y/edit?usp=sharing</br>
 
 ### サイトテーマ
- 消費者には求める商品、会社には意思決定の材料と売上向上を提供する
+ ビッグデータを元に意思決定を自動化していく為のアプリケーションです。
 
 ### テーマを選んだ理由
- 中国のアリババのビジネスが素晴らしいと思ったから
- 中国のアリババでは、意思決定を自動化することにより、消費者が求めている商品を素早く設計、製造、販売まで持っていくことができます。
- 消費者は欲しいものを手に入れることができ、会社は、無駄な意思決定を減らし、売上アップに繋げられるメリットがこのアプリケーションにあります。
-
+ 今回制作したアプリケーションの制作背景には私がエンジニアになりたい理由が関係しています。</br>
+ 私がエンジニアになりたい理由は第4次産業革命に自分も関わりたいと思っているからです。</br>
+ 過去に第一次、第二次、第三次と産業革命は起こり、人々の生活を豊かにしてきました。</br>
+ そして、次に起こると言われているのが第4次産業革命です。</br>
+ 第4次産業革命では、AI、ビッグデータ、クラウドが発展し、さらに人々の生活を豊かにすると言われています。</br>
+ 私は第4次産業革命の中でもビッグデータに着目しました。</br>
+ では、なぜビッグデータに着目したかと言うと、</br>
+ 中国のアリババグループの書籍からビッグデータを元に、意思決定を自動化させることができると知ったからです。</br>
+ アリババグループでは、消費者からデータを取り、そのデータを記録し、機械学習アルゴリズムを投入することで、意思決定を自動化させています。</br>
+ 意思決定を自動化することで得られるメリットは、プロジェクトの進行スピードが早くなり、会社の業績が上がるというメリットがあります。</br>
+ これらの背景を踏まえた上で、ビッグデータを扱えて、意思決定を自動化させられるようなアプリケーションを作りました。</br>
 
 ### ターゲットユーザ
-全世代
+ 全世代
 
 ### 主な利用シーン
-レビューをしてポイントを稼ぎたい時
+ 消費者：ポイント活動（ポイ活）をしたい時</br>
+ 企業　：ビッグデータを活用したい時</br>
 
 ## 設計書
-ER図
-https://drive.google.com/file/d/1_jJbT8c2Ug7_FjkcJFqStRhH1E5Gcri3/view?usp=sharing
-テーブル定義書
-https://docs.google.com/spreadsheets/d/1lxqjiYGWChO9c5HG6vYcdtWBbh3Q1yJNrp0xmKGyNzc/edit?usp=sharing
-アプリケーション詳細設計書
-https://docs.google.com/spreadsheets/d/1nNafzd_jTdvjom8MyIEOGV08oya-yumtDI_na04OwuQ/edit?usp=sharing
+ER図</br>
+https://drive.google.com/file/d/1_jJbT8c2Ug7_FjkcJFqStRhH1E5Gcri3/view?usp=sharing</br>
+テーブル定義書</br>
+https://docs.google.com/spreadsheets/d/1lxqjiYGWChO9c5HG6vYcdtWBbh3Q1yJNrp0xmKGyNzc/edit?usp=sharing</br>
+アプリケーション詳細設計書</br>
+https://docs.google.com/spreadsheets/d/1nNafzd_jTdvjom8MyIEOGV08oya-yumtDI_na04OwuQ/edit?usp=sharing</br>
 
 ## チャレンジ要素一覧
 https://docs.google.com/spreadsheets/d/1GixniUkmMtoQUQIbl4_a1gegywtDDSDSYoEGK9CQfa8/edit?usp=sharing
@@ -37,7 +43,6 @@ https://docs.google.com/spreadsheets/d/1GixniUkmMtoQUQIbl4_a1gegywtDDSDSYoEGK9CQ
 - OS：Linux(CentOS)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
 - フレームワーク：Ruby on Rails
-- JSライブラリ：jQuery
 - IDE：Cloud9
 
 ## 使用素材
