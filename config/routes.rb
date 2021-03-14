@@ -14,7 +14,6 @@ Rails.application.routes.draw do
   end
 
   root to: 'homes#top'
-  get 'homes/about' => 'homes#about'
 
   namespace :public do
     resources :customers, only: [:show, :edit, :update]
