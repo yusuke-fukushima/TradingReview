@@ -1,0 +1,5 @@
+class AddGenderToCustomers < ActiveRecord::Migration[5.2]
+  def change
+    add_column :customers, :Gender, :integer
+  end
+end
