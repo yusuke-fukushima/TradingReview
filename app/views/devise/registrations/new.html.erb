@@ -8,13 +8,11 @@
         </div>
         <%= form_with model: @customer, url: customer_registration_path, id: 'new_customer', class: 'new_customer', local: true do |f| %>
           <%= render "layouts/error_messages", resource: resource %>
-          <div class="mb-3">
-            <%= f.label :男性  %>
-            <%= f.radio_button :gender, :man %>
-            <%= f.label :女性  %>
-            <%= f.radio_button :gender, :woman %>
-            <%= f.label :その他  %>
-            <%= f.radio_button :gender, :other %>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" aria-hidden="true"><i class="fas fa-user"></i></span>
+            </div>
+            <%= f.select :gender,[["男性", "男性"], ["女性", "女性"] ] ,  :prompt => "選択してください" %>
           </div>
           <div class="input-group mb-3">
             <div class="input-group-prepend">

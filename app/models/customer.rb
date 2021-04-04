@@ -8,7 +8,7 @@ class Customer < ApplicationRecord
   validates :is_deleted, inclusion: { in: [true, false] }
 
   has_many :reviews
-  enum sex: { 男性: 0, 女性: 1, その他: 2}
+  enum gender: { "男性": 0, "女性": 1}
   
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |customer|
