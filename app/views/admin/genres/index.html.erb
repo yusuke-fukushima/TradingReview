@@ -19,8 +19,35 @@
             <% end %>
           </tbody>
         </table>
-        <%= link_to "新規登録", new_admin_genre_path, class:"btn btn-block btn-success mt-5 mb-5" %>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-block btn-success mb-3" data-toggle="modal" data-target="#exampleModal">新規登録</button>
         <%= paginate @genres %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="exampleModalLabel"><strong>ジャンル新規登録</strong></h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= form_with model: @genre, url: admin_genres_path,local:true do |f| %>
+          <%= f.attachment_field :image, class: "w-100" %>
+          <div class="input-group mb-3 mt-4">
+            <div class="input-group-prepend">
+              <span class="input-group-text" aria-hidden="true"><i class="fas fa-gifts"></i></span>
+            </div>
+            <%= f.text_field :name, class:"form-control", placeholder:"ジャンル名" %>
+          </div>
+          <%= f.submit "新規登録", class:"btn btn-block btn-success mt-5" %>
+        <% end %>
       </div>
     </div>
   </div>
