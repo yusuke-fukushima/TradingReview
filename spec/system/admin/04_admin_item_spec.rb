@@ -25,10 +25,6 @@ describe '[STEP4] 管理者商品一覧のテスト' do
         expect(page).to have_link item.name, href: admin_item_path(item.id)
         click_link item.name, href: admin_item_path(item.id)
       end
-      it '新規登録を押すと、新規登録画面に遷移する' do
-        expect(page).to have_link '新規登録'
-        click_link '新規登録', href: new_admin_item_path
-      end
     end
 
   end
@@ -94,52 +90,6 @@ describe '[STEP4] 管理者商品一覧のテスト' do
       end
       it 'リダイレクト先が、自分のユーザ詳細画面になっている' do
         expect(current_path).to eq '/admin/items/' + item.id.to_s
-      end
-    end
-  end
-
-  describe '商品新規登録画面のテスト' do
-    before do
-      visit new_admin_item_path
-    end
-
-    context '表示内容の確認' do
-      it 'URLが正しい' do
-        expect(current_path).to eq '/admin/items/new'
-      end
-      it '「新規登録」と表示される' do
-        expect(page).to have_content '新規登録'
-      end
-      it 'genre.nameフォームが表示される' do
-        select(value = genre.name, from: "item[genre_id]")
-        expect(page).to have_select('item[genre_id]', selected: genre.name)
-      end
-      it 'item.nameフォームが表示される' do
-        expect(page).to have_field 'item[name]'
-      end
-      it 'item.detailフォームが表示される' do
-        expect(page).to have_field 'item[detail]'
-      end
-      it '新規登録ボタンが表示される' do
-        expect(page).to have_button '新規登録'
-      end
-    end
-
-    context '新規登録成功のテスト' do
-      before do
-        file_path = Rails.root.join('spec', 'fixtures', 'no_image.jpg')
-        attach_file('item[image]', file_path)
-        select(value = genre.name, from: "item[genre_id]")
-        fill_in 'item[name]', with: Faker::Name.name
-        fill_in 'item[detail]', with: Faker::Lorem
-      end
-
-      it '正しく新規登録される' do
-        expect { click_button '新規登録' }.to change(Item.all, :count).by(1)
-      end
-      it '新規登録後のリダイレクト先が、新規登録できた商品の詳細画面になっている' do
-        click_button '新規登録'
-        expect(current_path).to eq '/admin/items/' + Item.last.id.to_s
       end
     end
   end

@@ -24,10 +24,6 @@ describe '[STEP3] 管理者ジャンル一覧のテスト' do
         expect(page).to have_link '編集', href: edit_admin_genre_path(genre.id)
         click_link '編集', href: edit_admin_genre_path(genre.id)
       end
-      it '新規登録を押すと、新規登録画面に遷移する' do
-        expect(page).to have_link '新規登録', href: new_admin_genre_path
-        click_link '新規登録', href: new_admin_genre_path
-      end
     end
   end
 
@@ -59,43 +55,6 @@ describe '[STEP3] 管理者ジャンル一覧のテスト' do
         expect(genre.reload.name).not_to eq @genre_old_name
       end
       it 'リダイレクト先が、ジャンル画面になっている' do
-        expect(current_path).to eq '/admin/genres'
-      end
-    end
-  end
-
-  describe 'ジャンル新規登録画面のテスト' do
-     before do
-      visit new_admin_genre_path
-    end
-
-    context '表示内容の確認' do
-      it 'URLが正しい' do
-        expect(current_path).to eq '/admin/genres/new'
-      end
-      it '「新規登録」と表示される' do
-        expect(page).to have_content '新規登録'
-      end
-      it 'nameフォームが表示される' do
-        expect(page).to have_field 'genre[name]'
-      end
-      it '新規登録ボタンが表示される' do
-        expect(page).to have_button '新規登録'
-      end
-    end
-
-    context '新規登録成功のテスト' do
-      before do
-        file_path = Rails.root.join('spec', 'fixtures', 'no_image.jpg')
-        attach_file('genre[image]', file_path)
-        fill_in 'genre[name]', with: Faker::Name.name
-      end
-      
-      it '正しく新規登録される' do
-        expect { click_button '新規登録' }.to change(Genre.all, :count).by(1)
-      end
-      it '新規登録後のリダイレクト先が、新規登録できた商品の詳細画面になっている' do
-        click_button '新規登録'
         expect(current_path).to eq '/admin/genres'
       end
     end
